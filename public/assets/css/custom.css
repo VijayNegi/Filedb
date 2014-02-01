@@ -1,0 +1,13 @@
+body {
+  padding-top: 50px;
+}
+.content {
+  padding: 40px 15px;
+  /*text-align: center;*/
+}
+
+.row-link { 
+	display: block; 
+	width: 100%; 
+	height: 100%; 
+}
