@@ -11,6 +11,6 @@
 	    			    	
 	    </ul>
 	    <a class="btn" href="{{ URL::route('Files.edit',[$file->id]) }}">Edit</a>
-	    <a class="btn" href="{{ URL::route('Files.delete',[$file->id]) }}">Delete</a>
+	    <a class="btn" href="{{ URL::route('Files.delete',[$file->id]) }}" onclick='return confirm("Please confirm you want to delete the record");'>Delete</a>
 
 @stop 

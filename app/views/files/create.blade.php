@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	{{ Form::open(['route'=>'Files.store','class'=>'form-horizontal'])}}
+	{{ Form::open(['route'=>'Files.store','class'=>'form-horizontal','onsubmit'=>'return confirm("Please confirm you want to add the record");'])}}
 		<div class="form-group">
 			{{Form::label('full_name',' Full File name:',['class'=>'col-sm-2 control-label'])}}
 			{{Form::text('full_name','',['class'=>'form-control'])}}

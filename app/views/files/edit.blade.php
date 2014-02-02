@@ -4,7 +4,7 @@
 	
 
 
-	{{ Form::model($file, ['route'=>['Files.update',$file->id],'class'=>'form-horizontal','method'=>'put'] ) }}
+	{{ Form::model($file, ['route'=>['Files.update',$file->id],'class'=>'form-horizontal','method'=>'put','onsubmit'=>'return confirm("Please confirm you want to update the record");'] ) }}
 
 		<div class="form-group">
 			{{Form::label('full_name',' Full File name:',['class'=>'col-sm-2 control-label'])}}
