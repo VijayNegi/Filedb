@@ -1,6 +1,18 @@
 <?php
 
-class FilesController extends \BaseController {
+class FilesController extends BaseController {
+
+
+	 public function __construct()
+    {
+    	$this->beforeFilter('auth',['only'=>['store','edit','destroy']]);
+        // $this->beforeFilter('auth', array('except' => 'getLogin'));
+
+        // $this->beforeFilter('csrf', array('on' => 'post'));
+
+        // $this->afterFilter('log', array('only' =>
+        //                     array('fooAction', 'barAction')));
+    }
 
 	/**
 	 * Display a listing of the resource.

@@ -17,6 +17,8 @@
     <!-- Custom styles for this template -->
     {{ HTML::style('assets\css\custom.css') }}
 
+     @yield('header')
+
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -45,6 +47,18 @@
             <li class=""><a href="{{ URL::to('/') }}">Home</a></li>
             <li><a href="{{ URL::route('Files.search') }}">Search</a></li>
             <li><a href="{{ URL::route('Files.create') }}">Add</a></li>
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+
+            @if(!Auth::check())
+              <li><a href="#">Hello Guest</a></li>
+              <li><a href="{{ URL::route('sessions.create') }}">Login</a></li>
+            @else 
+               <li><a href="#">Hello {{Auth::user()->username}}</a></li>
+              <li><a href="{{ URL::to('logout') }}">Logout</a></li>
+            @endif
+            
             
           </ul>
         </div><!--/.nav-collapse -->

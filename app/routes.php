@@ -19,3 +19,7 @@ Route::post('/Search', ['as'=>'Files.results','uses'=>'FilesController@Results']
 Route::get('/delete/{id}',['as'=>'Files.delete','uses'=>'FilesController@destroy']);
 
 Route::resource('Files','FilesController');
+Route::get('login','SessionsController@create');
+Route::get('logout','SessionsController@destroy'); 
+
+Route::resource('sessions','SessionsController');
