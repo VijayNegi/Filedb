@@ -47,7 +47,8 @@ class FilesController extends BaseController {
 		if($file->isValid())
 		{
 			$file->save();
-			return Redirect::to('/');
+			$message = 'File with name "'.$file->full_name.' " added to db';
+			return Redirect::to('/')->with('sucess', $message);
 		}
 		//return 'Validation Failed!!!!';
 		return Redirect::back()->withInput()->withErrors($file->errors);
@@ -90,7 +91,8 @@ class FilesController extends BaseController {
 		if($file->isValid())
 		{
 			$file->save();
-			return Redirect::to('/');
+			$message = 'File with name "'.$file->full_name.' " updated in db';
+			return Redirect::to('/')->with('sucess', $message);
 		}
 		//return 'Validation Failed!!!!';
 		return Redirect::back()->withInput()->withErrors($file->errors);
@@ -106,7 +108,8 @@ class FilesController extends BaseController {
 	{
 		$file = Files::findOrFail($id);
 		$file->delete();
-		return Redirect::to('/');
+		$message = 'File with name "'.$file->full_name.' " deleted from db';
+		return Redirect::to('/')->with('error', $message);
 	}
 	public function Search()
 	{

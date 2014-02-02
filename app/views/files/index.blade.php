@@ -4,6 +4,14 @@
 @section('content')
 	
 	<h1>Files</h1>
+	@if(Session::has('sucess'))
+	
+		<div class='alert alert-success'>{{ Session::get('sucess') }}</div>
+	@endif
+	@if(Session::has('error'))
+	
+		<div class='alert alert-danger'>{{ Session::get('error') }}</div>
+	@endif
 
 		<table class="table table-striped">
         <thead>

@@ -5,7 +5,10 @@
 	{{Form::open(['route'=>'sessions.store','class'=>'form-signin'])}}
 
 		<h2 class="form-signin-heading">Please sign in</h2>
-		
+			@if(Session::has('login_errors'))
+	
+				<div class='alert alert-danger'>Username or password incorrect</div>
+			@endif
 
 			{{Form::email('email','',['class'=>'form-control','placeholder'=>'Email','required','autofocus'])}}
 		
