@@ -5,7 +5,7 @@ class FilesController extends BaseController {
 
 	 public function __construct()
     {
-    	$this->beforeFilter('auth',['only'=>['store','edit','destroy']]);
+    	$this->beforeFilter('auth',['only'=>['store','edit','destroy','create','update']]);
         // $this->beforeFilter('auth', array('except' => 'getLogin'));
 
         // $this->beforeFilter('csrf', array('on' => 'post'));
@@ -48,7 +48,7 @@ class FilesController extends BaseController {
 		{
 			$file->save();
 			$message = 'File with name "'.$file->full_name.' " added to db';
-			return Redirect::to('/')->with('sucess', $message);
+			return Redirect::to('/')->with('success', $message);
 		}
 		//return 'Validation Failed!!!!';
 		return Redirect::back()->withInput()->withErrors($file->errors);
@@ -92,7 +92,7 @@ class FilesController extends BaseController {
 		{
 			$file->save();
 			$message = 'File with name "'.$file->full_name.' " updated in db';
-			return Redirect::to('/')->with('sucess', $message);
+			return Redirect::to('/')->with('success', $message);
 		}
 		//return 'Validation Failed!!!!';
 		return Redirect::back()->withInput()->withErrors($file->errors);

@@ -4,9 +4,9 @@
 @section('content')
 	
 	<h1>Files</h1>
-	@if(Session::has('sucess'))
+	@if(Session::has('success'))
 	
-		<div class='alert alert-success'>{{ Session::get('sucess') }}</div>
+		<div class='alert alert-success'>{{ Session::get('success') }}</div>
 	@endif
 	@if(Session::has('error'))
 	
