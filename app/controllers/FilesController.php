@@ -21,7 +21,8 @@ class FilesController extends BaseController {
 	 */
 	public function index()
 	{
-		$files = Files::paginate(10);
+		//Files::latest,orderBy('created_at')
+		$files = Files::latest('updated_at')->paginate(10);
 		return View::make('files.index',compact('files'));
 	}
 
