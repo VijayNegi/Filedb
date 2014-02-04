@@ -15,7 +15,8 @@ class Files extends Eloquent {
 
 	protected static $rules = [
 			'full_name'=>'required',
-			'check'=>'required'
+			'check'=>'required',
+			'description'=>'required'
 
 	];
 	public $errors;

@@ -23,6 +23,7 @@
 		<div class="form-group">
 			{{Form::label('description',' Description:',['class'=>'col-sm-2 control-label'])	}}
 			{{Form::textarea('description',NULL,['class'=>'form-control'])	}}
+			{{ $errors->first('description', '<span class="label label-danger">:message</span>') }}
 		</div>
 
 
