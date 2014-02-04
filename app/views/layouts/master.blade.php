@@ -47,6 +47,15 @@
             <li class=""><a href="{{ URL::to('/') }}">Home</a></li>
             <li><a href="{{ URL::route('Files.search') }}">Search</a></li>
             <li><a href="{{ URL::route('Files.create') }}">Add</a></li>
+            @if(Auth::check() )
+             
+              <li><a href="{{ URL::route('user.files',['id'=>Auth::user()->id]) }}">My Files</a></li>
+            @endif
+            @if(Auth::check() && Auth::user()->admin )
+             
+              <li><a href="{{ URL::route('user.create') }}">Add Users</a></li>
+            @endif
+
             
           </ul>
           <ul class="nav navbar-nav navbar-right">

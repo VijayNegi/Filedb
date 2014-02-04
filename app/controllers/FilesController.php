@@ -45,6 +45,7 @@ class FilesController extends BaseController {
 	{
 		$file = new Files;
 		$file->fill(Input::all());
+		$file->user_id = Auth::user()->id;
 		if($file->isValid())
 		{
 			$file->save();

@@ -36,4 +36,8 @@ class Files extends Eloquent {
 		}
 		return true;
 	}
+	public function user()
+    {
+        return $this->belongsTo('User');
+    }
 }

@@ -18,7 +18,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password');
+	protected $guarded = ['id'];
 
+	protected static $rules = [
+			'username'=>'required',
+			'email'=>'required|unique:users',
+			'password'=>'required'
+	];
+	public $errors;
 	/**
 	 * Get the unique identifier for the user.
 	 *
@@ -52,6 +59,20 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function setPasswordAttribute($value)
 	{
 	 	 $this->attributes['password'] = Hash::make($value);
+	}
+	public function files()
+    {
+        return $this->hasMany('Files');
+    }
+    public function isValid()
+	{
+		$v = Validator::make($this->attributes, static::$rules);
+		if($v->fails())
+		{
+			$this->errors = $v->messages();
+			return false;
+		}
+		return true;
 	}
 
 }

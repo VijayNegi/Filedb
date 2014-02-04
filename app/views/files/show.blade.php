@@ -8,6 +8,7 @@
 			<li class="list-group-item"><b>Frames     </b>: {{ $file->frames}} </li>
 			<li class="list-group-item"><b>Version    </b>: {{ $file->version}} </li>
 			<li class="list-group-item"><b>Description</b>: {{ $file->description}} </li>
+			<li class="list-group-item"><b>Submited by</b>: {{ $file->user->username}} </li>
 	    			    	
 	    </ul>
 	    <a class="btn" href="{{ URL::route('Files.edit',[$file->id]) }}">Edit</a>

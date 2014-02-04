@@ -7,9 +7,9 @@ class UsersController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($id)
 	{
-		$files = User::paginate(10);
+		$files = User::findOrFail($id)->files()->paginate(10);
 		return View::make('files.index',compact('files'));
 	}
 
@@ -20,7 +20,10 @@ class UsersController extends BaseController {
 	 */
 	public function create()
 	{
-		
+		if(Auth::user()->admin)
+			return View::make('users.create');
+		$message = 'You dont have admin privilages!!!';
+		return Redirect::to('/')->with('error', $message);
 	}
 
 	/**
@@ -30,15 +33,22 @@ class UsersController extends BaseController {
 	 */
 	public function store()
 	{
-		$file = new User;
-		$file->fill(Input::all());
-		if($file->isValid())
+		if(!Auth::user()->admin)
 		{
-			$file->save();
-			return Redirect::to('/');
+			$message = 'You dont have admin privilages!!!';
+			return Redirect::to('/')->with('error', $message);
+		}
+		$user = new User;
+		$user->fill(Input::all());
+		//Auth::user()->id;
+		if($user->isValid() )
+		{
+			$user->save();
+			$message = 'user with name "'.$user->username.' " added to db';
+			return Redirect::to('/')->with('success', $message);
 		}
 		//return 'Validation Failed!!!!';
-		return Redirect::back()->withInput()->withErrors($file->errors);
+		return Redirect::back()->withInput()->withErrors($user->errors);
 	}
 
 	/**
